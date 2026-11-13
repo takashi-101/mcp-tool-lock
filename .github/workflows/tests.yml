@@ -1,0 +1,49 @@
+name: tests
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+  official-servers:
+    # 公式の参照MCPサーバーを実際に起動して道具の定義を取り、点検と照合を行う（版は固定）
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Snapshot official servers
+        run: |
+          mkdir -p live sandbox
+          python -m mcp_tool_lock snapshot --cmd "npx -y @modelcontextprotocol/server-filesystem@2.1.0 $PWD/sandbox" --server server-filesystem --out live/server-filesystem.json
+          python -m mcp_tool_lock snapshot --cmd "npx -y @modelcontextprotocol/server-everything@2.1.0" --server server-everything --out live/server-everything.json
+      - name: Check and verify with this repository's action
+        uses: ./
+        with:
+          snapshots: live/*.json
+          lock: examples/real/mcp-tools.lock.json
+          fail-on: 低
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install ruff bandit
+      - run: ruff check .
+      - run: bandit -q -r mcp_tool_lock
