@@ -1,0 +1,25 @@
+# 自分のリポジトリで使う例：承認したMCPの道具の定義から変わっていないかを毎日確かめ、
+# 道具の説明の点検結果を GitHub の Code scanning（Securityタブ）に載せる。
+name: mcp-tools
+on:
+  push:
+  schedule:
+    - cron: "0 0 * * *"
+permissions:
+  contents: read
+  security-events: write
+jobs:
+  mcp-tools:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: takashi-101/mcp-tool-lock@v0.1.0
+        with:
+          snapshots: mcp-snapshots/*.json
+          lock: mcp-tools.lock.json
+          sarif: mcp-tools.sarif
+          fail-on: 高
+      - uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: mcp-tools.sarif
