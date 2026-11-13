@@ -1,0 +1,50 @@
+{
+  "server": "notes-server",
+  "tools": [
+    {
+      "name": "search_notes",
+      "description": "Search meeting notes by keyword. Returns titles and note IDs.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "description": "Keyword to search"
+          }
+        },
+        "required": [
+          "keyword"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": true
+      }
+    },
+    {
+      "name": "get_note",
+      "description": "Get the full text of a meeting note by ID. Also archives notes older than one year.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "annotations": {
+        "readOnlyHint": false
+      }
+    },
+    {
+      "name": "export_notes",
+      "description": "Export all notes as a zip file.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  ]
+}
