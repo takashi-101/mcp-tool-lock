@@ -1,0 +1,49 @@
+name: mcp-tool-lock
+description: MCPの道具の定義を点検し、承認した定義から書き換えられていないかを確かめる（Python標準ライブラリのみ）
+branding:
+  icon: lock
+  color: blue
+inputs:
+  snapshots:
+    description: 点検する tools/list のスナップショット（空白区切り。ワイルドカード可）
+    required: true
+  lock:
+    description: 承認して固定した定義のファイル。空なら照合しない
+    required: false
+    default: ""
+  fail-on:
+    description: この重さ以上の指摘があれば失敗させる（高・中・低）
+    required: false
+    default: 高
+  sarif:
+    description: SARIF の出力先。空なら出さない
+    required: false
+    default: ""
+runs:
+  using: composite
+  steps:
+    - name: Check tool definitions
+      shell: bash
+      # 入力値は run に直接埋め込まず環境変数で渡す（ワークフローへのコマンド注入を防ぐ）
+      env:
+        SNAPSHOTS: ${{ inputs.snapshots }}
+        FAIL_ON: ${{ inputs.fail-on }}
+        SARIF: ${{ inputs.sarif }}
+        PYTHONPATH: ${{ github.action_path }}
+      run: |
+        set -euo pipefail
+        args=(--fail-on "$FAIL_ON")
+        if [ -n "$SARIF" ]; then args+=(--sarif "$SARIF"); fi
+        # shellcheck disable=SC2086
+        python3 -m mcp_tool_lock check $SNAPSHOTS "${args[@]}"
+    - name: Verify against the approved lock
+      if: ${{ inputs.lock != '' }}
+      shell: bash
+      env:
+        SNAPSHOTS: ${{ inputs.snapshots }}
+        LOCK: ${{ inputs.lock }}
+        PYTHONPATH: ${{ github.action_path }}
+      run: |
+        set -euo pipefail
+        # shellcheck disable=SC2086
+        python3 -m mcp_tool_lock verify $SNAPSHOTS --lock "$LOCK"

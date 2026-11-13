@@ -1,0 +1,27 @@
+[project]
+name = "mcp-tool-lock"
+version = "0.1.0"
+description = "MCPの道具の定義を点検し、承認した定義を固定して書き換えを検出する"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = []
+
+[project.scripts]
+mcp-tool-lock = "mcp_tool_lock.__main__:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["mcp_tool_lock"]
+
+[tool.ruff]
+line-length = 160
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "B", "S"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101", "S108", "S603"]
