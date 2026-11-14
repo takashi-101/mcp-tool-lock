@@ -93,11 +93,13 @@ CI（`official-servers`）は、版を固定した2つのサーバーを `npx` �
 
 ## 根拠（学習）
 
-| 機能 | 裏付けになる学習（発行元・名称・発行日） | 照会先（Credly） |
-|---|---|---|
-| MCPの道具定義の点検と、ハッシュによる定義の固定 | Coursera（認定：IBM）「Build AI Agents Using MCP」2026年11月3日 | https://www.credly.com/badges/eb0ddb53-3a26-48ba-95d6-cbc242ed24bc |
-| 道具の説明に仕込まれた指示（ツールポイズニング）の検出 | Coursera（認定：IBM）「Generative AI for Cybersecurity Professionals Specialization」2026年11月11日 | https://www.credly.com/badges/7d044f37-5952-49e2-9163-4ec3e061fcc1 |
-| 指摘の重大度付けと SARIF 出力 | Coursera「Google Cybersecurity Professional Certificate(v.2)」2026年11月12日 | https://www.credly.com/badges/90bbb775-f9b8-4aef-bc24-1ed7c67d17e4 |
+| 求められる力 | 機能 | 裏付けになる学習（発行元・名称・発行日） | 照会先（Credly） |
+|---|---|---|---|
+| 生成AI・LLMの実装（RAG・エージェント・MCP） | MCPの道具定義の点検と、ハッシュによる定義の固定 | Coursera（認定：IBM）「Build AI Agents Using MCP」2026年11月3日 | https://www.credly.com/badges/eb0ddb53-3a26-48ba-95d6-cbc242ed24bc |
+| セキュリティ・ガバナンス | 道具の説明に仕込まれた指示（ツールポイズニング）の検出 | Coursera（認定：IBM）「Generative AI for Cybersecurity Professionals Specialization」2026年11月11日 | https://www.credly.com/badges/7d044f37-5952-49e2-9163-4ec3e061fcc1 |
+| セキュリティ・ガバナンス | 指摘の重大度付けと SARIF 出力 | Coursera「Google Cybersecurity Professional Certificate(v.2)」2026年11月12日 | https://www.credly.com/badges/90bbb775-f9b8-4aef-bc24-1ed7c67d17e4 |
+
+「求められる力」の分け方は、[プロフィール](https://github.com/takashi-101) の「FDE・AXで求められる力と、その根拠」と同じです。
 
 - Model Context Protocol: Advanced Topics（Claude Academy）：[修了証](https://verify.skilljar.com/c/gqjh45tamjd8)
 - Credlyの全件（JavaScriptを動かさずに読めるJSON。AIの読み込み機能や検索のクローラーでも読める）：https://www.credly.com/users/takashi-higuchi.2d0eec27/badges.json
