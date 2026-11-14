@@ -91,11 +91,15 @@ CI（`official-servers`）は、版を固定した2つのサーバーを `npx` �
 - [OWASP Top 10 for Agentic Applications for 2026](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/)（OWASP GenAI Security Project、2025年12月9日）
 - [MCP Tool Poisoning Defense Guide](https://hidekazu-konishi.com/entry/mcp_tool_poisoning_defense_guide.html)（攻撃の分類と出典の整理）
 
-## 学習の照会先
-- Build AI Agents Using MCP（Coursera、2026年11月3日）：[Credly](https://www.credly.com/badges/eb0ddb53-3a26-48ba-95d6-cbc242ed24bc)
+## 根拠（学習）
+
+| 機能 | 裏付けになる学習（発行元・名称・発行日） | 照会先（Credly） |
+|---|---|---|
+| MCPの道具定義の点検と、ハッシュによる定義の固定 | Coursera（認定：IBM）「Build AI Agents Using MCP」2026年11月3日 | https://www.credly.com/badges/eb0ddb53-3a26-48ba-95d6-cbc242ed24bc |
+| 道具の説明に仕込まれた指示（ツールポイズニング）の検出 | Coursera（認定：IBM）「Generative AI for Cybersecurity Professionals Specialization」2026年11月11日 | https://www.credly.com/badges/7d044f37-5952-49e2-9163-4ec3e061fcc1 |
+| 指摘の重大度付けと SARIF 出力 | Coursera「Google Cybersecurity Professional Certificate(v.2)」2026年11月12日 | https://www.credly.com/badges/90bbb775-f9b8-4aef-bc24-1ed7c67d17e4 |
+
 - Model Context Protocol: Advanced Topics（Claude Academy）：[修了証](https://verify.skilljar.com/c/gqjh45tamjd8)
-- Google Cybersecurity Professional Certificate (v.2)（Coursera、2026年11月12日）：[Credly](https://www.credly.com/badges/90bbb775-f9b8-4aef-bc24-1ed7c67d17e4)
-- Generative AI for Cybersecurity Professionals Specialization（Coursera、2026年11月11日）：[Credly](https://www.credly.com/badges/7d044f37-5952-49e2-9163-4ec3e061fcc1)
 - Credlyの全件（JavaScriptを動かさずに読めるJSON。AIの読み込み機能や検索のクローラーでも読める）：https://www.credly.com/users/takashi-higuchi.2d0eec27/badges.json
 
 ## 同じシリーズ
